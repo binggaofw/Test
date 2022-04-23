@@ -1,0 +1,19 @@
+.Page {
+    padding: 1em;
+}
+.Page-Header {
+    text-decoration: underline;
+    width: 100%;
+    padding-bottom: 0.5em;
+    margin-bottom: 0;
+}
+
+.Page-line {
+    width: 100%;
+    border-top: 1px solid grey;
+    padding-bottom: 1em;
+}
+
+.Page-content {
+    padding-bottom: 1em;
+}
