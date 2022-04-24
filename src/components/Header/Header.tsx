@@ -16,7 +16,7 @@ export type PageProps = {
 }
 
 export const Header: FC<PageProps> = ({ headerText, children }) => (
-    <Page>
+    <Page id="header">
         {headerText && <HeaderTitle>
             {headerText}
         </HeaderTitle>}

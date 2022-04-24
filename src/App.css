@@ -1,56 +1,15 @@
-.Home-Page {
-
-}
-
-.Home-Page--Top-Bar {
-    display: flex;
-    justify-content: space-between;
-}
-
-.Home-Page--Saved-Header {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-}
-
-.Home-Page--Search-Container {
-    height: 3em;
-    display: flex;
-    width: 100%;
-}
-
-.Home-Page--Search-Container-Input{
-    height: 100%;
-    padding: 0;
-    width: 100%;
-    margin-right: 1em;
-}
-
-
-
-.Home-Page--Tweet-Container-Wrapper {
-    display: flex;
-    padding-top: 1em;
-}
-
 .Home-Page--Tweet-Container-Wrapper-Guidance {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 14em;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 14em;
+  flex-direction: column;
 }
 .Home-Page--Tweet-Container-Wrapper-Guidance svg {
-    width: 3em;
-    height: 4em;
+  width: 3em;
+  height: 4em;
 }
 .Home-Page--Tweet-Container-Wrapper-Guidance p {
-    text-align: center;
-    margin: 0;
-}
-
-.Home-Page--Search-Status {
-    padding-top:1em;
+  text-align: center;
+  margin: 0;
 }

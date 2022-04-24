@@ -10,6 +10,12 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 
+import {
+  SavedHeader,
+  SearchContainer,
+  TopBar,
+  TweetContainerWrapper,
+} from './app.style';
 import Header from './components/Header/Header';
 import StyledInput from './components/SearchInputBox/SearchInputBox';
 import StyledSearchButton
@@ -45,34 +51,34 @@ export const App: FC<{}> = () => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="Home-Page">
+      <div >
         <Header headerText="Tweet Saver">
-          <div className="Home-Page--Top-Bar">
-            <div className="Home-Page--Search-Container">
-              <StyledInput type="input" name="Tweet-Search"
-                placeholder="Search Twitter by content"
+          <TopBar>
+            <SearchContainer>
+              <StyledInput type="input" name="tweetSearch"
+                placeholder="Search Twitter By KeyWords"
                 onChange={(e) => setSearchInput(e.target.value)}
               />
-                <StyledSearchButton onClick={(e) => {
-                  setSearchTerm(searchInput)
-                }} variant="contained" />
+              <StyledSearchButton onClick={(e) => {
+                setSearchTerm(searchInput)
+              }} variant="contained" />
 
-            </div>
-            <h2 className="Home-Page--Saved-Header">Saved Tweets</h2>
-          </div>
-          <div className="Home-Page--Search-Status">
-            {service && service.status === 'init' && <p>Please enter some text to start</p>}
+            </SearchContainer>
+            <SavedHeader id="savedTweetHeader">Saved Tweets</SavedHeader>
+          </TopBar>
+          <div id="searchResult" style={{ paddingTop: "1em" }}>
+
             {service && service.status === 'loading' && <div>Loading...</div>}
-            {service && service.status === 'loaded' && <div>Loaded </div>}
+            {service && service.status === 'loaded' && <div>Loaded the latest 10 items from Twitter API </div>}
             {service && service.status === 'error' && (
-              <div>Error loading the request, sorry!</div>
+              <div>Error loading the request!</div>
             )}
           </div>
-          <div className="Home-Page--Tweet-Container-Wrapper">
+          <TweetContainerWrapper>
             <DroppableTweetContainer
               tweets={reformattedTweets}
               handleDrop={(tweet: any) => {
-                console.log('list one', tweet)
+
                 setLocalStorageKey(STORAGE_KEY, [tweet])
                 setLocalStorageTweets(getLocalStorageKey(STORAGE_KEY))
               }}
@@ -83,10 +89,11 @@ export const App: FC<{}> = () => {
               <p>to save</p>
             </div>
             <DroppableTweetContainer
+
               tweets={localStorageTweets}
               allowedDropEffect="move"
             />
-          </div>
+          </TweetContainerWrapper>
         </Header>
       </div>
     </DndProvider>

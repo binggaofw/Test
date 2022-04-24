@@ -30,18 +30,18 @@ export type TweetProps = {
     id: number;
 }
 
-export const TweetItem: FC<TweetProps> = ({profilePicture, name, twitterHandle, date, tweetContent}) => {
+export const TweetItem: FC<TweetProps> = ({ profilePicture, name, twitterHandle, date, tweetContent }) => {
     return (
         <div className="Tweet">
-            {profilePicture && <img className="Tweet-profilePicture" alt={`${name}'s profile`}/>}
-            {!profilePicture && <div className="Tweet-profilePicture"><AccountCircleIcon/></div>}
+            {profilePicture && <img className="Tweet-profilePicture" alt={`${name}'s profile`} />}
+            {!profilePicture && <div className="Tweet-profilePicture"><AccountCircleIcon /></div>}
             <div className="Tweet-content-right">
                 <div className="Tweet-TopBar">
                     <div className="Tweet-TopBar-names">
                         <h3 className="Tweet-name">{name}</h3>
-                        <p className="Tweet-twitterHandle">{twitterHandle}</p>
+                        <p style={{ paddingLeft: "1em" }}>{twitterHandle}</p>
                     </div>
-                    {date && <p className="Tweet-date">{new Date(date).toLocaleDateString() }</p>}
+                    {date && <p className="Tweet-date">{new Date(date).toLocaleDateString()}</p>}
                 </div>
                 <p className="Tweet-tweetContent">{tweetContent}</p>
             </div>
@@ -49,51 +49,51 @@ export const TweetItem: FC<TweetProps> = ({profilePicture, name, twitterHandle, 
     )
 }
 interface DropResult {
-	allowedDropEffect: string
-	dropEffect: string
-	name: string
+    allowedDropEffect: string
+    dropEffect: string
+    name: string
 }
 
 
 interface DraggableProps {
-	handleDrop?: (Tweet: TweetProps) => void;
+    handleDrop?: (Tweet: TweetProps) => void;
 }
 
 export type DraggableTweetProps = DraggableProps & TweetProps;
 
 /* Handle muliple Drags and drops of same element */
 const DraggableTweet: FC<DraggableTweetProps> = (props) => {
-    const {handleDrop, ...rest} = props
+    const { handleDrop, ...rest } = props
     const item = { name: rest.name, type: DRAG_TYPE }
 
     const [{ isDragging }, drag] = useDrag(() => ({
-		// "type" is required. It is used by the "accept" specification of drop targets.
-    type: DRAG_TYPE,
-    item,
-		// The collect function utilizes a "monitor" instance (see the Overview for what this is)
-		// to pull important pieces of state from the DnD system.
-    end: (item, monitor) => {
-		const dropResult = monitor.getDropResult<DropResult>()
-			if (item && dropResult) {
+        // "type" is required. It is used by the "accept" specification of drop targets.
+        type: DRAG_TYPE,
+        item,
+        // The collect function utilizes a "monitor" instance (see the Overview for what this is)
+        // to pull important pieces of state from the DnD system.
+        end: (item, monitor) => {
+            const dropResult = monitor.getDropResult<DropResult>()
+            if (item && dropResult) {
                 const isDropAllowed =
-                dropResult.allowedDropEffect === 'any' ||
-                dropResult.allowedDropEffect === dropResult.dropEffect
-                if(isDropAllowed){
+                    dropResult.allowedDropEffect === 'any' ||
+                    dropResult.allowedDropEffect === dropResult.dropEffect
+                if (isDropAllowed) {
                     handleDrop && handleDrop(rest)
                 }
-			}
+            }
 
-		},
-    collect: (monitor) => ({
-      isDragging: monitor.isDragging()
-    })
-  }))
+        },
+        collect: (monitor) => ({
+            isDragging: monitor.isDragging()
+        })
+    }))
 
-  return (
-    <div ref={drag} style={{ opacity: isDragging ? 0.5 : 1}}>
-        <TweetItem {...rest}/>
-    </div>
-  )
+    return (
+        <div id="dragContainer" ref={drag} style={{ opacity: isDragging ? 0.5 : 1 }}>
+            <TweetItem {...rest} />
+        </div>
+    )
 
 }
 export default DraggableTweet

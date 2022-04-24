@@ -14,10 +14,9 @@ COPY package.json ./
 COPY package-lock.json ./
 RUN npm install --silent
 RUN npm install react-scripts@4.0.3 -g --silent
-RUN npm install -g concurrently
 
 COPY . .
 
 EXPOSE 3000
 # start app
-CMD ["concurrently","node server.js", "npm start"]
+CMD ["npm", "start"]

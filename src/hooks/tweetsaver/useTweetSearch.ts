@@ -9,41 +9,48 @@ import useConstant from '../useconstant';
 
 const useTweetSearch = (searchString: string) => {
   const [result, setResult] = useState<Service<Tweet[]>>({
-    status: 'init'
+    status: "init",
   });
-  const amountToFetch = 10
+  const amountToFetch = 10;
 
   const fetchData = async (searchTerm: string) => {
-    setResult({ status: 'loading' });
-    try{
-          const response = await fetch (
-            `http://localhost:8080/twitter-search?q=${searchTerm}&count=${amountToFetch}`,
-            {
-            headers: {
-              'Content-Type': 'application/json',
-            }} )
-
-            const responseJson = await response.json()
-
-            if(responseJson.errors) throw new Error(responseJson.errors[0] || 'The api request failed')
-            if(responseJson) setResult({ status: 'loaded', payload: responseJson })
-             else setResult({ status: 'loaded', payload: responseJson })
-    } catch(e: any) {
-
-        setResult({ status: 'error', error: { name:e.name, message:e.message }})
-    }
-  }
-
-    const debouncedSearchFunction = useConstant(() => AwesomeDebouncePromise(fetchData, 300));
-
-    useAsync(async () => {
-        if (searchString.length === 0) {}
-        else {
-          debouncedSearchFunction(searchString);
+    setResult({ status: "loading" });
+    try {
+      const response = await fetch(
+        // for aws lightsail use
+         `http://container-service-2.service.local:8080/twitter-search?q=${searchTerm}&count=${amountToFetch}`,
+        //  `http://localhost:8080/twitter-search?q=${searchTerm}&count=${amountToFetch}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
-      },
-      [debouncedSearchFunction, searchString]
-    )
+      );
+
+      const responseJson = await response.json();
+
+      if (responseJson.errors)
+        throw new Error(responseJson.errors[0] || "The api request failed");
+      if (responseJson) setResult({ status: "loaded", payload: responseJson });
+      else setResult({ status: "loaded", payload: responseJson });
+    } catch (e: any) {
+      setResult({
+        status: "error",
+        error: { name: e.name, message: e.message },
+      });
+    }
+  };
+
+  const debouncedSearchFunction = useConstant(() =>
+    AwesomeDebouncePromise(fetchData, 300)
+  );
+
+  useAsync(async () => {
+    if (searchString.length === 0) {
+    } else {
+      debouncedSearchFunction(searchString);
+    }
+  }, [debouncedSearchFunction, searchString]);
   return result;
 };
 
