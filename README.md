@@ -39,8 +39,32 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## SaveTweet Detail
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### deploy to aws lightsail
+It uses lightsail container service.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+It can be access through this [here](https://container-service-2.f4peb530dmhr8.us-west-2.cs.amazonlightsail.com/)
+
+## Running it in local
+
+ first download the source code in your machine.
+ in root folder create a .env file and put the correspond secrets value for twitter service
+ ```env
+ REACT_APP_CONSUMER_KEY=
+REACT_APP_CONSUMER_TOKEN=
+REACT_APP_ACCESS_TOKEN=
+REACT_APP_ACCESS_TOKEN_SECRET=
+ ```
+
+ then run `node server.js` to start a local server to bypass cors issue
+
+ ## start react app local
+
+ run `npm start` in the terminal window
+
+ ## unit test
+
+
+ ## integration test
+

@@ -1,25 +1,30 @@
-import './Header.css';
-
 import React, {
   FC,
   ReactNode,
 } from 'react';
 
+import {
+  Content,
+  HeaderTitle,
+  Page,
+  PageLine,
+} from './Header.style';
+
 export type PageProps = {
     headerText?: string;
     children: ReactNode;
-  }
+}
 
-export const Header: FC<PageProps> = ({headerText, children}) => (
-    <div className="Page">
-        {headerText && <h1 className="Page-Header">
+export const Header: FC<PageProps> = ({ headerText, children }) => (
+    <Page>
+        {headerText && <HeaderTitle>
             {headerText}
-        </h1>}
-        <div className="Page-line"/>
-        <div className="Page-content">
+        </HeaderTitle>}
+        <PageLine />
+        <Content>
             {children}
-        </div>
-    </div>
+        </Content>
+    </Page>
 )
 
 export default Header

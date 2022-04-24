@@ -8,12 +8,16 @@ WORKDIR /usr/src/app
 
 # add `/usr/src/app/node_modules/.bin` to $PATH
 ENV PATH /usr/src/app/node_modules/.bin:$PATH
+# install app dependencies
 
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm install --silent
+RUN npm install react-scripts@4.0.3 -g --silent
+RUN npm install -g concurrently
 
-COPY package*.json ./
-RUN npm install
 COPY . .
 
-
+EXPOSE 3000
 # start app
-CMD ["npm", "start"]
+CMD ["concurrently","node server.js", "npm start"]

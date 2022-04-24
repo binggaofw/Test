@@ -1,13 +1,13 @@
-.Saver-Page {
+.Home-Page {
 
 }
 
-.Saver-Page--Top-Bar {
+.Home-Page--Top-Bar {
     display: flex;
     justify-content: space-between;
 }
 
-.Saver-Page--Saved-Header {
+.Home-Page--Saved-Header {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -15,54 +15,42 @@
     margin: 0;
 }
 
-.Saver-Page--Search-Container {
+.Home-Page--Search-Container {
     height: 3em;
     display: flex;
     width: 100%;
 }
 
-.Saver-Page--Search-Container-Input{
+.Home-Page--Search-Container-Input{
     height: 100%;
     padding: 0;
     width: 100%;
     margin-right: 1em;
 }
 
-.Saver-Page--Search-Container-Icon {
-    height: 100%;
-    border: 0.1em solid black;
-    display: flex;
-    width: 3em;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0.1em 0.1em;
-}
-.Saver-Page--Search-Container-Icon svg {
-    height: 2em;
-    width: 2em;
-}
 
-.Saver-Page--Tweet-Container-Wrapper {
+
+.Home-Page--Tweet-Container-Wrapper {
     display: flex;
     padding-top: 1em;
 }
 
-.Saver-Page--Tweet-Container-Wrapper-Guidence {
+.Home-Page--Tweet-Container-Wrapper-Guidance {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 14em;
     flex-direction: column;
 }
-.Saver-Page--Tweet-Container-Wrapper-Guidence svg {
+.Home-Page--Tweet-Container-Wrapper-Guidance svg {
     width: 3em;
     height: 4em;
 }
-.Saver-Page--Tweet-Container-Wrapper-Guidence p {
+.Home-Page--Tweet-Container-Wrapper-Guidance p {
     text-align: center;
     margin: 0;
 }
 
-.Saver-Page--Search-Status {
+.Home-Page--Search-Status {
     padding-top:1em;
 }

@@ -3,6 +3,7 @@ import './TweetsContainer.css';
 import React, { FC } from 'react';
 
 import { useDrop } from 'react-dnd';
+import styled from 'styled-components';
 
 import TweetItem, {
   DRAG_TYPE,
@@ -19,6 +20,12 @@ export const TweetsContainer: FC<TweetsContainerProps> = ({tweets, ...rest}) => 
         {tweets && tweets.map((tweet) => <TweetItem key={tweet.id}{...tweet} {...rest}/>)}
     </div>
 )
+export const StyledTweetsContainer = styled(TweetsContainer)`
+height: 65vh;
+border: 0.1em solid black;
+overflow:scroll;
+width: 100%;
+`
 
 interface DroppableProps {
 	allowedDropEffect?: string;
@@ -46,9 +53,9 @@ export const DroppableTweetContainer: FC<DroppableTweetProps> = ({ allowedDropEf
     return (
       <div
         ref={drop}
-        role={'Dustbin'}
+
         style={{ backgroundColor: isActive ? 'pink' : 'white', width: '100%' }}
-        className="DroppableTweetContainer"
+
       >
          <TweetsContainer {...rest}/>
       </div>
