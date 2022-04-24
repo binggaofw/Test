@@ -18,8 +18,8 @@ const useTweetSearch = (searchString: string) => {
     try {
       const response = await fetch(
         // for aws lightsail use
-         `http://container-service-2.service.local:8080/twitter-search?q=${searchTerm}&count=${amountToFetch}`,
-        //  `http://localhost:8080/twitter-search?q=${searchTerm}&count=${amountToFetch}`,
+        // `http://container-service-2.service.local:8080/twitter-search?q=${searchTerm}&count=${amountToFetch}`,
+          `http://localhost:8080/twitter-search?q=${searchTerm}&count=${amountToFetch}`,
         {
           headers: {
             "Content-Type": "application/json",

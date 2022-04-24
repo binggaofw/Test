@@ -61,7 +61,7 @@ interface DraggableProps {
 
 export type DraggableTweetProps = DraggableProps & TweetProps;
 
-/* Handle muliple Drags and drops of same element */
+
 const DraggableTweet: FC<DraggableTweetProps> = (props) => {
     const { handleDrop, ...rest } = props
     const item = { name: rest.name, type: DRAG_TYPE }
@@ -91,7 +91,7 @@ const DraggableTweet: FC<DraggableTweetProps> = (props) => {
 
     return (
         <div id="dragContainer" ref={drag} style={{ opacity: isDragging ? 0.5 : 1 }}>
-            <TweetItem {...rest} />
+          <TweetItem {...rest} />
         </div>
     )
 

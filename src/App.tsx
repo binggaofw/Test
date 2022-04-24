@@ -36,23 +36,32 @@ export const App: FC<{}> = () => {
   const [searchTerm, setSearchTerm] = useState('')
   const [searchInput, setSearchInput] = useState('')
   const [localStorageTweets, setLocalStorageTweets] = useState(getLocalStorageKey(STORAGE_KEY) || [])
-  const service = useTweetSearch(searchTerm);
-  service.status === 'loaded' ? console.log(service.payload) : console.log(service)
-  const tweets = service.status === 'loaded' && searchTerm ? service.payload : []
-  const reformattedTweets = tweets && tweets.map((tweet: Tweet) => {
-    return {
-      name: tweet.user.name,
-      twitterHandle: tweet.user.screen_name,
-      date: tweet.created_at,
-      tweetContent: tweet.text,
-      id: tweet.id,
-    }
-  });
 
+
+  const service = useTweetSearch(searchTerm);
+
+  let reformattedTweets
+
+    const tweets = service.status === 'loaded' && searchTerm ? service.payload : []
+    reformattedTweets = tweets && tweets.map((tweet: Tweet) => {
+      return {
+        name: tweet.user.name,
+        twitterHandle: tweet.user.screen_name,
+        date: tweet.created_at,
+        tweetContent: tweet.text,
+        id: tweet.id,
+      }
+    });
+
+
+  const removedDroppedItem = (item) => {
+     reformattedTweets =  reformattedTweets.filter((element)=>element.id !== item.id);
+
+  }
   return (
     <DndProvider backend={HTML5Backend}>
       <div >
-        <Header headerText="Tweet Saver">
+        <Header headerText="Tweet Saver By Bing">
           <TopBar>
             <SearchContainer>
               <StyledInput type="input" name="tweetSearch"
@@ -67,7 +76,6 @@ export const App: FC<{}> = () => {
             <SavedHeader id="savedTweetHeader">Saved Tweets</SavedHeader>
           </TopBar>
           <div id="searchResult" style={{ paddingTop: "1em" }}>
-
             {service && service.status === 'loading' && <div>Loading...</div>}
             {service && service.status === 'loaded' && <div>Loaded the latest 10 items from Twitter API </div>}
             {service && service.status === 'error' && (
@@ -79,6 +87,7 @@ export const App: FC<{}> = () => {
               tweets={reformattedTweets}
               handleDrop={(tweet: any) => {
 
+                removedDroppedItem(tweet)
                 setLocalStorageKey(STORAGE_KEY, [tweet])
                 setLocalStorageTweets(getLocalStorageKey(STORAGE_KEY))
               }}

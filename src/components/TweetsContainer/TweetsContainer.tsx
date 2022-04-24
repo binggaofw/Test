@@ -53,9 +53,7 @@ export const DroppableTweetContainer: FC<DroppableTweetProps> = ({ allowedDropEf
   return (
     <div id="savedTweetsContainer"
       ref={drop}
-
       style={{ backgroundColor: isActive ? 'pink' : 'white', width: '100%' }}
-
     >
       <TweetsContainer {...rest} />
     </div>
