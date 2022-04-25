@@ -1,0 +1,37 @@
+version: '3.7'
+
+services:
+
+  web:
+    image: savetweet
+    container_name: react-frontend-1
+    env_file: .env
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      # Binds the application folder from the host inside the container for fast changes
+      # - .:/usr/src/app
+      # Ignores/Hides the node_modules from the bind on the host allowing the node_modules
+      # from inside the container to be used instead
+      - /usr/src/app/node_modules
+    networks:
+      - tweetsaver
+  backend:
+    image: savetweetbackend
+    container_name: backend1
+    env_file: .env
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    ports:
+      - "8080:8080"
+
+    networks:
+      - tweetsaver
+networks:
+  tweetsaver:
+    name: "common-backend"
+    driver: "bridge"

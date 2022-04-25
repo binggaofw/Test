@@ -44,11 +44,11 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 ### deploy to aws lightsail
 It uses lightsail container service.
 
-It can be access through this [here](https://container-service-2.f4peb530dmhr8.us-west-2.cs.amazonlightsail.com/)
+It can be access through this [here](https://container-service-2.f4peb530dmhr8.us-west-2.cs.amazonlightsail.com/), However it is just the pure frontend.
 
 ## Running it in local
-
- first download the source code in your machine.
+### Preparation
+ First download the source code in your machine.
  in root folder create a .env file and put the correspond secrets value for twitter service
  ```env
  REACT_APP_CONSUMER_KEY=
@@ -56,15 +56,29 @@ REACT_APP_CONSUMER_TOKEN=
 REACT_APP_ACCESS_TOKEN=
 REACT_APP_ACCESS_TOKEN_SECRET=
  ```
+then run `npm install` to install dependencies.
 
- then run `node server.js` to start a local server to bypass cors issue
+ the third step is run `node server.js` to start a local server to bypass cors issue.
 
- ## start react app local
+ ## Start react app
 
  run `npm start` in the terminal window
 
  ## unit test
-
+There is no unit test for this simple project
 
  ## integration test
+The cypress library used to do integration test.
+The integration test not done for all functions. The drag and drop function do not finish yet.
+the test file under cypress folder
+## Final Result
+Please see the my local version of the app
+open the app home page
+![](screenshots/1.png)
 
+
+Type some key word(please note I disable the input event, only user click the button will trigger api call)
+![](screenshots/2.png)
+
+After user drag item to right. (TODO: the dragged item need to removed from left side)
+![](screenshots/3.png)
