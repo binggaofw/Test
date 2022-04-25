@@ -44,7 +44,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 ### deploy to aws lightsail
 It uses lightsail container service.
 
-It can be access through this [here](https://container-service-2.f4peb530dmhr8.us-west-2.cs.amazonlightsail.com/), However it is just the pure frontend. I did not find a way to make it  works like local one.
+It can be access through this [here](https://container-service-2.f4peb530dmhr8.us-west-2.cs.amazonlightsail.com/)
 
 ## Running it in local
 ### Preparation
