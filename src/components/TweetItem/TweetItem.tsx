@@ -63,7 +63,7 @@ export type DraggableTweetProps = DraggableProps & TweetProps;
 
 
 const DraggableTweet: FC<DraggableTweetProps> = (props) => {
-    const { handleDrop, ...rest } = props
+    const { handleDrop,  ...rest } = props
     const item = { name: rest.name, type: DRAG_TYPE }
 
     const [{ isDragging }, drag] = useDrag(() => ({

@@ -10,6 +10,7 @@ import TweetItem, {
 
 export type TweetsContainerProps = {
   tweets: TweetProps[];
+
   handleDrop?: (Tweet: TweetProps) => void;
 }
 export const StyledTweetsContainer = styled.div`

@@ -82,8 +82,9 @@ export const App: FC<{}> = () => {
               <div>Error loading the request!</div>
             )}
           </div>
-          <TweetContainerWrapper>
+          <TweetContainerWrapper id="tweetsItem">
             <DroppableTweetContainer
+
               tweets={reformattedTweets}
               handleDrop={(tweet: any) => {
 

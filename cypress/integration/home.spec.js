@@ -27,8 +27,9 @@ describe('Cypress Home Page test' ,() => {
 
         cy.get('#tweetSearch').type('Canada BC')
         cy.get('svg.MuiSvgIcon-root').eq(0).click()
-        cy.get('#searchResult > :nth-child(1)').trigger('dragStart')
-        cy.get('#savedTweetsContainer').trigger('dragover', {force: true})
-        cy.get('#savedTweetsContainer').trigger('drop')
+
+       // cy.get('#searchResult > :nth-child(1)').trigger('dragStart')
+        cy.get('#dragContainer > :nth-child(1)').drag('#savedTweetsContainer')
+
     })
 });
