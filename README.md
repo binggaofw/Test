@@ -44,7 +44,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 ### deploy to aws lightsail
 It uses lightsail container service.
 
-It can be access through this [here](https://container-service-2.f4peb530dmhr8.us-west-2.cs.amazonlightsail.com/), However it is just the pure frontend.
+It can be access through this [here](https://container-service-2.f4peb530dmhr8.us-west-2.cs.amazonlightsail.com/), However it is just the pure frontend. I did not find a way to make it  works like local one.
 
 ## Running it in local
 ### Preparation
@@ -69,7 +69,7 @@ There is no unit test for this simple project
 
  ## integration test
 The cypress library used to do integration test.
-The integration test not done for all functions. The drag and drop function do not finish yet.
+The integration test not done for all functions.
 the test file under cypress folder
 ## Final Result
 Please see the my local version of the app
@@ -81,4 +81,5 @@ Type some key word(please note I disable the input event, only user click the bu
 ![](screenshots/2.png)
 
 After user drag item to right. (TODO: the dragged item need to removed from left side)
+## the library react-dnd does not support multiple items drag and drop. Please see this github [issue](https://github.com/react-dnd/react-dnd/issues/14)
 ![](screenshots/3.png)
