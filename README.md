@@ -83,3 +83,11 @@ Type some key word(please note I disable the input event, only user click the bu
 After user drag item to right. (TODO: the dragged item need to removed from left side)
 ## the library react-dnd does not support multiple items drag and drop. Please see this github [issue](https://github.com/react-dnd/react-dnd/issues/14)
 ![](screenshots/3.png)
+
+
+## Dockerize the application
+This application also can be run through docker and docker-compose
+
+Install the docker and docker-compose first and run `docker-compose build` to build docker images
+then run `docker-compose up` to start the app, and open localhost:3000 in browser can open the app
+at the end run `docker-compose stop` to shutdown the app.
